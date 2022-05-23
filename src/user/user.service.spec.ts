@@ -32,4 +32,17 @@ describe('UserService', () => {
 
     expect(await userService.findUnique({ id: mockUser.id })).toEqual(mockUser);
   });
+
+  it('insert a user into the database', async () => {
+    const mockUser: User = {
+      id: 'abc-123',
+      email: 'user@email.com',
+      name: 'User',
+      password: 'user123',
+    };
+
+    prismaService.user.create = jest.fn().mockReturnValueOnce(mockUser);
+
+    expect(await userService.create(mockUser)).toEqual(mockUser);
+  });
 });
