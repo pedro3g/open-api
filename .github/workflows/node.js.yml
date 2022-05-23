@@ -8,6 +8,9 @@ on:
     branches: [ development ]
   pull_request:
     branches: [ main ]
+    
+env:
+  DATABASE_URL: file:./dev.db
 
 jobs:
   build:
